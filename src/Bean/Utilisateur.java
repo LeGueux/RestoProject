@@ -31,12 +31,12 @@ public class Utilisateur implements Serializable{
 
 	private String mdp;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	private Role role;
 
 	private String avatar;
 	
-	@OneToMany(mappedBy="user", cascade = CascadeType.REMOVE, orphanRemoval = true)
+	@OneToMany(mappedBy="user", cascade=CascadeType.ALL)
 	private List<Commentaire> lesCommentaires;
 	
 	public Utilisateur() {}

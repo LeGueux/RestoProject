@@ -1,6 +1,7 @@
 package DAO;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 
 import Bean.Utilisateur;
 
@@ -13,11 +14,10 @@ public class UtilisateurDAO {
 
 		EntityManager em = JPAUtil.getEntityManager();
 
-		em.getTransaction().begin();
-		
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
 		em.persist(u);
-		
-		em.getTransaction().commit();
+		tx.commit();
 		
 		em.close();
 

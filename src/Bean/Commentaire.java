@@ -3,6 +3,7 @@ package Bean;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +27,7 @@ public class Commentaire implements Serializable{
 	private int note;
 	private ZonedDateTime date;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	private Utilisateur user;
 	
 	@ManyToOne

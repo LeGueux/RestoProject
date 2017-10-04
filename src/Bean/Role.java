@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,7 +26,7 @@ public class Role implements Serializable {
 	
 	private String libelle;
 	
-	@OneToMany(mappedBy="role")
+	@OneToMany(mappedBy="role", cascade=CascadeType.PERSIST)
 	private List<Utilisateur> lesUtilisateurs;
 	
 	public Role() {}
