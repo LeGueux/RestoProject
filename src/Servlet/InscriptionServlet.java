@@ -61,7 +61,5 @@ public class InscriptionServlet extends HttpServlet {
 		} else {
 			System.out.println("ERREUR PASSWORD");
 		}
-		
 	}
-
 }
