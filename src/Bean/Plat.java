@@ -35,6 +35,15 @@ public class Plat implements Serializable {
 	
 	public Plat() {}
 
+	public Plat(String titre, String desc, double prix, String ingredient, String niveau) {
+		super();
+		this.titre = titre;
+		this.desc = desc;
+		this.prix = prix;
+		this.ingredient = ingredient;
+		this.niveau = niveau;
+	}
+
 	public String getTitre() {
 		return titre;
 	}
