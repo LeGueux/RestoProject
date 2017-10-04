@@ -1,0 +1,14 @@
+@CHARSET "ISO-8859-1";
+
+nav{
+	margin-bottom:50px;
+}
+
+.form{
+	padding:75px;
+}
+
+.title-connexion{
+	text-align:center;
+	margin-bottom:45px;
+}
