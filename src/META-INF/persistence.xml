@@ -7,6 +7,8 @@
 		<class>Bean.Role</class>
 		<class>Bean.Plat</class>
 		<class>Bean.Commentaire</class>
+		<class>Bean.Restaurant</class>
+		<class>Bean.TableRestaurant</class>
 		
 		<properties>
 			<!-- PROPRIETES STANDARDS JPA -->

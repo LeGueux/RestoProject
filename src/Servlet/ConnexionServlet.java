@@ -35,15 +35,14 @@ public class ConnexionServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 		
 		request.setCharacterEncoding("UTF-8");
 		
@@ -58,8 +57,7 @@ public class ConnexionServlet extends HttpServlet {
 			if(user.getRole().getLibelle().equals("User")){
 				
 				request.setAttribute("User", user);
-				
-				rd = request.getRequestDispatcher("accueil.jsp");
+				rd = request.getRequestDispatcher("/RestaurantServlet");
 			}else{
 				
 				request.setAttribute("User", user);
@@ -68,9 +66,10 @@ public class ConnexionServlet extends HttpServlet {
 			}
 		}else{
 			System.out.println("Mauvais identifiants");
+			rd = request.getRequestDispatcher("connexion.jsp");
 		}
 		
-		rd.forward(request, response);	
+		rd.forward(request, response);
 		
 	}
 		

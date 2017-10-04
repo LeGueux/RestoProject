@@ -1,17 +1,42 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
+<%@ include file="header.jsp" %>
 <body>
-	<form method="POST" action="ConnexionServlet">
-		Login : <input type="text" id="login" name="login" value="">
-		Password : <input type="password" id="password" name="password" value="">
-		
-		<input type="submit" value="valider" />
-	</form>
+	<nav>
+	<div class="nav-wrapper"></div>
+	</nav>
+	<div class="row">
+		<div class="col s6 offset-s3">
+			<div class="card">
+				
+				<div class="row form">
+					<span class="card-title title-connexion">Veuillez entrer vos
+					indentifiants</span>
+					<form class="col s12" method="POST" action="ConnexionServlet">
+
+						<div class="row">
+							<div class="input-field col s12">
+								<label for="login"></label> <input type="text" id="login"
+									name="login" value="" placeholder="Login" class="validate">
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<label for="login"></label> <input type="password" id="password"
+									name="password" value="" placeholder="Mot de passe"
+									class="validate">
+							</div>
+						</div>
+						<div class="row">
+							<button class="btn waves-effect waves-light" type="submit"
+								name="action">
+								Se connecter <i class="material-icons right">send</i>
+							</button>
+						</div>
+
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
