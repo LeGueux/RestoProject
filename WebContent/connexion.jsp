@@ -7,11 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="POST" action="InscriptionServlet">
+	<form method="POST" action="ConnexionServlet">
 		Login : <input type="text" id="login" name="login" value="">
-		Email : <input type="text" id="email" name="email" value="">
 		Password : <input type="password" id="password" name="password" value="">
-		Confirmation du password : <input type="password" id="password2" name="password2" value="">
 		
 		<input type="submit" value="valider" />
 	</form>

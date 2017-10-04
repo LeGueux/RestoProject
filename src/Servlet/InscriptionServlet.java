@@ -1,6 +1,8 @@
 package Servlet;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,6 +44,8 @@ public class InscriptionServlet extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
+		RequestDispatcher rd = null;
+		
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
 		String password2 = request.getParameter("password2");
@@ -58,8 +62,14 @@ public class InscriptionServlet extends HttpServlet {
 			u.setRole(r);
 			
 			UtilisateurDAO.signup(u);
+			
+			rd = request.getRequestDispatcher("connexion.jsp");
 		} else {
-			System.out.println("ERREUR PASSWORD");
+			
+			rd = request.getRequestDispatcher("inscription.jsp");
+			System.out.println("Les mots de passes ne correspondent pas !");
 		}
+		
+		rd.forward(request, response);
 	}
 }
