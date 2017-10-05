@@ -2,31 +2,30 @@
 <%@page import="Bean.Utilisateur"%>
 <%@page import="java.util.List"%>
 <%@page import="Bean.Restaurant"%>
-<%@ include file="header.jsp" %>
+<%@ include file="header.jsp"%>
 
-<body>
-	<%
-		ArrayList<Restaurant> lesRestaurants = (ArrayList<Restaurant>) request.getAttribute("lesRestos");
-	%>
+<%@ include file="navbar.jsp"%>
+<%
+	
+%>
 
-	<%
-		Utilisateur user = (Utilisateur) request.getAttribute("User");
-	%>
+<c:forEach var="lesRestaurants" items="${lesRestos}">
+	<div class="col s12 m7">
+		<div class="card">
+			
+			<div class="card-stacked">
+				<div class="card-content">
+					<p>
+						${lesRestaurants.nom}
+					</p>
+				</div>
+				<div class="card-action">
+					<a href="#">Détails</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</c:forEach>
 
-	<%
-		out.println(user.getLogin());
-	%>
-
-
-	<%
-		if (lesRestaurants.size() > 0) {
-			for (int i = 0; i < lesRestaurants.size(); i++) {
-				out.println(lesRestaurants.get(i).getNom());
-
-			}
-		} else {
-			out.println("Pas de restaurants");
-		}
-	%>
-</body>
-</html>
+	</body>
+	</html>

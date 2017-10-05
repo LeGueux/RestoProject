@@ -49,5 +49,47 @@ public class UtilisateurDAO {
 		return user;
 
 	}
+	
+	public static Utilisateur account(int id) {
+
+		EntityManager em = JPAUtil.getEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		Utilisateur user = new Utilisateur();
+		
+		try{
+			
+			tx.begin();
+			Query query = em.createQuery("From Utilisateur where id = :id");
+			query.setParameter("id", id);
+			
+			user = (Utilisateur) query.getSingleResult();
+			
+			tx.commit();
+			
+			em.close();
+		} catch(Exception e){
+			tx.rollback();
+		}
+
+		return user;
+
+	}
+	
+	public static void updateAccount(Utilisateur user){
+		EntityManager em = JPAUtil.getEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		
+		try{
+			tx.begin();
+			
+			em.merge(user);
+			
+			tx.commit();
+			
+			em.close();
+		} catch(Exception e){
+			tx.rollback();
+		}
+	}
 
 }

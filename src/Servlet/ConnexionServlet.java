@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Bean.Role;
 import Bean.Utilisateur;
@@ -36,6 +37,28 @@ public class ConnexionServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		HttpSession session = request.getSession(false);
+		RequestDispatcher rd = null;
+		
+		String url = request.getRequestURI();
+		if(url.equals("/Resto/ConnexionServlet")){
+			response.sendRedirect("connexion.jsp");
+		}
+		
+		if(url.equals("/Resto/Deconnexion")){
+			
+			if(session != null){
+				session.invalidate();
+				rd = request.getRequestDispatcher("connexion.jsp");
+			}else{
+				System.out.println("erreur");
+			}
+			rd.forward(request, response);
+		}
+		
+		
+	
+		
 		
 	}
 
@@ -48,6 +71,8 @@ public class ConnexionServlet extends HttpServlet {
 		
 		RequestDispatcher rd = null;
 		
+		HttpSession session =  request.getSession(true);
+		
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
 		
@@ -56,11 +81,11 @@ public class ConnexionServlet extends HttpServlet {
 		if(user.getId() != 0){
 			if(user.getRole().getLibelle().equals("User")){
 				
-				request.setAttribute("User", user);
+				session.setAttribute("user", user);
 				rd = request.getRequestDispatcher("/RestaurantServlet");
 			}else{
 				
-				request.setAttribute("User", user);
+				request.setAttribute("user", user);
 				
 				rd = request.getRequestDispatcher("administration.jsp");
 			}
